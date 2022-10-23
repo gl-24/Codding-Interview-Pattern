@@ -31,8 +31,8 @@ def longest_substring_with_distinct_characters(s,k):
             start += 1
         d = max(d,end - start + 1)
         end += 1
-    return d     
-
+    return d
+         
 def main():
     s = "cbbebi"
     k = 3
