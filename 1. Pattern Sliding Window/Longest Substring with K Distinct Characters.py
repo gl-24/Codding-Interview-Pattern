@@ -32,7 +32,7 @@ def longest_substring_with_distinct_characters(s,k):
         d = max(d,end - start + 1)
         end += 1
     return d
-         
+
 def main():
     s = "cbbebi"
     k = 3
@@ -41,3 +41,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+Time Complexity : O(N)
+Space Complexity : O(1)
