@@ -17,19 +17,20 @@ Banana + Melon (total weight 5) => 10 profit
 This shows that Banana + Melon is the best combination as it gives us the maximum profit and the total weight does not exceed the capacity.
 '''
 # Choice diagram 
-# def knapsack(wt,val,W,n)-> int:
-#     if n == 0 or W == 0:
-#         return  0 
+def knapsack(wt,val,W,n)-> int:
+    if n == 0 or W == 0:
+        return  0 
     
-#     if wt[n-1] <= W:
-#         return max(val[n-1] + knapsack(wt,val,W - wt[n-1], n - 1), knapsack(wt,val,W,n-1))
+    if wt[n-1] <= W:
+        return max(val[n-1] + knapsack(wt,val,W - wt[n-1], n - 1), knapsack(wt,val,W,n-1))
     
-#     else:
-#         return knapsack(wt, val, W, n - 1)
+    else:
+        return knapsack(wt, val, W, n - 1)
 
-#Memoization 
-t = [[-1] * 101] * 1001
+# Memoization 
+# t = [[-1] * 101] * 1001
 def knapsack(wt,val,W,n)->int:
+    t = [[0 for x in range(W+1)] for x in range(n+1)]    
     if n == 0 or W == 0:
         return 0
     
@@ -40,6 +41,26 @@ def knapsack(wt,val,W,n)->int:
     
     if t[n][W] != -1:
         return t[n][W]
+
+#Top Down Approach 
+# t[n+1][w+1]
+def knapsack(wt,val,W,n):
+    t = [[0 for x in range(W+1)] for x in range(n+1)]
+
+    for i in range(n+1):
+        for j in range(W+1):
+            if i == 0 or j == 0:
+                t[i][j] = 0
+
+            if wt[i-1] <= j:
+                t[i][j] = max(val[i-1] + t[i-1][j - wt[i-1]], t[i-1][j])
+
+            else:
+                t[i][j] = t[i-1][j]
+
+    return t[n][W]        
+    
+    
 def main():
     wt = [2,3,1,4]
     val = [4,5,3,7]
