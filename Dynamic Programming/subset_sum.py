@@ -10,7 +10,7 @@ There is no subset that add up to 30.
 
 def subset_sum(arr,sum):
     n = len(arr)
-    t = [[None for x in range(sum+1)] for x in range(n+1)]
+    t = [[False for x in range(sum+1)] for x in range(n+1)]
     for i in range(n+1):
         for j in range(sum+1):
             if i == 0:
@@ -24,11 +24,7 @@ def subset_sum(arr,sum):
                 t[i][j] = t[i-1][j - arr[i-1]] or t[i-1][j]
             else:
                 t[i][j] = t[i-1][j]
-    if t[n][sum] == None:
-        return False 
-    return True
-
-
+    return t[n][sum]
 
 def main():
     arr = [2,3,7,8,10]
