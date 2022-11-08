@@ -47,8 +47,8 @@ def knapsack(wt,val,W,n)->int:
 def knapsack(wt,val,W,n):
     t = [[0 for x in range(W+1)] for x in range(n+1)]
 
-    for i in range(n+1):
-        for j in range(W+1):
+    for i in range(1,n+1):
+        for j in range(1,W+1):
             if i == 0 or j == 0:
                 t[i][j] = 0
 
@@ -62,9 +62,9 @@ def knapsack(wt,val,W,n):
     
     
 def main():
-    wt = [2,3,1,4]
-    val = [4,5,3,7]
-    W = 5 
+    wt = [4,5,1]
+    val = [1,2,3]
+    W = 4 
     n = len(wt)
     ans = knapsack(wt,val,W,n) 
     print(ans)
